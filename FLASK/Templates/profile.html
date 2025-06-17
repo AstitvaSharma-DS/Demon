@@ -26,6 +26,29 @@
             font-weight: bold;
             
         }
+        .profile-underline {
+            position: relative;
+            display: inline-block;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .profile-underline::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 3px;
+            background: orange;
+            transition: width 0.5s cubic-bezier(.4,0,.2,1);
+            animation: underline-in 0.7s cubic-bezier(.4,0,.2,1) forwards;
+        }
+
+        @keyframes underline-in {
+            from { width: 0; }
+            to   { width: 100%; }
+        }
         div.container{
             margin-top: 50px;
             background-color: rgba(255, 255, 255, 0.1);
@@ -217,7 +240,7 @@ Visit your Profile to view your stats, achievements </span>
                     <a class="nav-link" href="http://127.0.0.1:6060/home">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://127.0.0.1:6060/profile">Profile</a>
+                    <a class="nav-link profile-underline" href="http://127.0.0.1:6060/profile">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="http://127.0.0.1:6060/about">About</a>
@@ -229,19 +252,15 @@ Visit your Profile to view your stats, achievements </span>
         <button class="Back" id="closeProfileBtn" type="button">Back</button><br><br>
         <ul>
             <h4 >Profile</h4>
-            {%for i in data%}
+            {%for i in data %}
             <li><p class="card-text"><strong>Username:</strong> {{ i.name }}</p></li><br>
             <li><p class="card-text"><strong>Email:</strong> {{ i.email }}</p></li><br>
-            {%endfor%}
+            {% endfor %}
         </ul>
     </div>
     <div class="sidebar-score" >
         <button class="Back1" id="closeScoreBtn" type="button" >Back</button><br><br>
-        <ul>
-            <h4 >Score!</h4>
-            <li><p class="card-text"><strong>{{i.game:}}</strong>     {{ i.Score }}</p></li><br>
-            <li><p class="card-text"><strong>{{i.game:}}</strong>     {{ i.Score }}</p></li><br>
-        </ul>
+        
     </div>
     <div class="container mt-5 ">
         <h1 class="text-center">Profile Information</h1>

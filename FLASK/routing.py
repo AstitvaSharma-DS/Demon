@@ -95,8 +95,8 @@ def front():
 
 @app.route('/profile')
 def profile(): 
-    p=session.get('Fdata', None)
-    return render_template("profile.html", data=p)
+    data=session.get('Fdata', None)
+    return render_template("profile.html", data=data)
 
 @app.route('/home')
 def home():

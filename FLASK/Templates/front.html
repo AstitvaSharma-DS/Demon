@@ -28,6 +28,29 @@
             font-weight: bold;
             
         }
+        .front-underline {
+            position: relative;
+            display: inline-block;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .front-underline::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 3px;
+            background: orange;
+            transition: width 0.5s cubic-bezier(.4,0,.2,1);
+            animation: underline-in 0.7s cubic-bezier(.4,0,.2,1) forwards;
+        }
+
+        @keyframes underline-in {
+            from { width: 0; }
+            to   { width: 100%; }
+        }
         /* Blurred background image */
         .bg-blur {
             position: fixed;
@@ -85,7 +108,7 @@ Visit your Profile to view your stats, achievements </span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#" style="color: #fff;">DEMON</a>
+        <a class="navbar-brand front-underline" href="#" style="color: #fff;">DEMON</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

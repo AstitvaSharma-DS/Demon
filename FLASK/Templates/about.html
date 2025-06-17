@@ -26,6 +26,29 @@
             font-weight: bold;
             
         }
+        .about-underline {
+            position: relative;
+            display: inline-block;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .about-underline::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 3px;
+            background: orange;
+            transition: width 0.5s cubic-bezier(.4,0,.2,1);
+            animation: underline-in 0.7s cubic-bezier(.4,0,.2,1) forwards;
+        }
+
+        @keyframes underline-in {
+            from { width: 0; }
+            to   { width: 100%; }
+        }
     </style>
 </head>
 <body>
@@ -70,7 +93,7 @@ Visit your Profile to view your stats, achievements </span>
                     <a class="nav-link" href="http://127.0.0.1:6060/profile">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://127.0.0.1:6060/about">About</a>
+                    <a class="nav-link about-underline" href="http://127.0.0.1:6060/about">About</a>
                 </li>
             </ul>
         </div>
