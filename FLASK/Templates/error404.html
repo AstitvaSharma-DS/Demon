@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>404 Not Found</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .error-container {
+            text-align: center;
+            animation: fadeIn 1.5s;
+        }
+        .error-code {
+            font-size: 8rem;
+            font-weight: bold;
+            letter-spacing: 10px;
+            color: #ff1744;
+            text-shadow: 0 0 40px #ff1744, 0 0 10px #fff;
+            margin-bottom: 0;
+        }
+        .error-message {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 0 0 10px #232526;
+        }
+        .home-btn {
+            padding: 14px 32px;
+            font-size: 1.2rem;
+            background: #ff1744;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 16px #000a;
+            transition: background 0.2s;
+        }
+        .home-btn:hover {
+            background: #d50000;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .ghost {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: float 2s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0);}
+            50% { transform: translateY(-20px);}
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="ghost">👻</div>
+        <div class="error-code">404</div>
+        <div class="error-message">Oops! The page you're looking for can't be found.</div>
+    </div>
+</body>
+</html>

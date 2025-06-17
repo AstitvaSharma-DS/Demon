@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign Up</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Verdana, Geneva, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, red,black, red,black,red);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 40px;
+      width: 350px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    .container h2 {
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 2em;
+      color: #ffffff;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px 12px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      font-size: 1em;
+      background: rgba(255, 255, 255, 0.123);
+      color: #fff;
+      transition: background 0.3s ease;
+    }
+
+    .form-group input::placeholder {
+      color: #ffffff;
+    }
+
+    .form-group input:focus {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #a36a15, #6e1404);
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(to right, #6e1404, #a36a15);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 0.9em;
+      color: #ccc;
+    }
+
+    .footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+  </style>
+ <script> 
+    function validatepass(){
+      var pass= document.getElementById('pass').value;
+      var cpass= document.getElementById('Cpass').value;
+      if(pass!=cpass){
+        alert("passwords don't match. Please try again");
+        return false;
+      }
+      return true;
+    }
+  </script> 
+</head>
+<body>
+  <div class="container">
+    <h2>Sign Up</h2>
+    <form action="/signup" method="POST"  onsubmit="validatepass();">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" name="name" id="name" placeholder="Your name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" name= "email" id="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Create Password</label>
+        <input type="password" name="password" id="pass" placeholder="Create Password" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Confirm Password</label>
+        <input type="password" name="Cpassword" id="Cpass" placeholder="Confirm Password" required>
+      </div>
+      <button type="submit" class="btn">Create Account</button>
+    </form>
+    <div class="footer">
+      Already have an account? <a href="http://127.0.0.1:6060/login">Log In</a>
+    </div>
+  </div>
+</body>
+</html>

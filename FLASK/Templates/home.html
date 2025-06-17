@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #232526 10%, #414345 90%);
+            color: #fff;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: bold;
+            margin-left: 130px;
+        }
+        .navbar-brand {
+            margin-left: 20px;
+            margin-right: 20px;
+            color: #fff !important;
+            font-weight: bold;
+            
+        }
+        /* Sidebar styles */
+        .sidebar {
+            position: fixed;
+            top: 20;
+            left: 0;
+            width: 220px;
+            height: 100vh;
+            background: #232526;
+            color: #fff;
+            padding: 24px 16px 16px 16px;
+            overflow-y: auto;
+            box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+            z-index: 1050;
+        }
+
+        .sidebar h5 {
+            margin-top: 0;
+            margin-bottom: 16px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #ffd700;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 14px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .sidebar ul li:hover {
+            border: 1px solid #fff; /* Add a blue border */
+            color: #007bff;
+            background: #232526;
+        }
+         .flappybird {
+            display: flex;
+            align-items: flex-start;
+            margin: 40px 0 0 260px; /* adjust left margin if sidebar width changes */
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            padding: 24px;
+            /* max-width: 600px; */
+            width:100%;
+        }
+        .flappybird .image {
+            flex: 0 0 auto;
+            margin-right: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .flappybird .image img {
+            display: block;
+            margin-bottom: 16px;
+        }
+        .flappybird-content {
+            flex: 1 1 0;
+            color: #fff;
+            max-width: 350px;
+        }
+        .flappybird .image .button {
+            margin-top: 18px;
+            background: green;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .flappybird .image .button:hover {
+            background: darkgreen;
+            color:grey;
+        }
+    </style>
+</head>
+<body>
+    <div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+        <h4 class="text-white">Welcome!</h4>
+        <span class="text-muted">This is a basic online gaming platform.<br>Explore Games
+
+Browse our collection of online games from the Home section.<br>
+Click on any game to see its details and start playing.<br>
+Play & Compete<br>
+
+Play solo or challenge your friends!<br>
+Track your scores and achievements on your profile.<br>
+Profile & Progress<br>
+<br>
+Visit your Profile to view your stats, achievements </span>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand" href="http://127.0.0.1:6060/front"><img src="{{ url_for('static', filename='screenshot.png') }}" alt="DEMON" height="40"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="http://127.0.0.1:6060/front" style="color: #fff;">DEMON</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="http://127.0.0.1:6060/home">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:6060/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:6060/about">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="sidebar">
+        <h5>Game Categories</h5>
+        <ul>
+            <li>Puzzle</li>
+            <li>Adventure</li>
+            <li>Strategy</li>
+            <li>Racing</li>
+            <li>Arcade</li>
+        </ul>
+    </div>
+    <!-- Add this inside your .flappybird div -->
+    <div class="flappybird" type="arcade">
+        <div class="image">
+            <img src="{{ url_for('static', filename='flappybird.png') }}" alt="DEMON" height="100">
+            <a href="https://flappybird.gg/"><button class="button" type="button">Play!</button></a>
+        </div>
+        <div class="flappybird-content">
+            <p>
+                <strong>Flappy Bird</strong> is a simple yet addictive arcade game where you control a bird, guiding it through gaps between pipes by tapping to keep it airborne. The goal is to fly as far as possible without hitting any obstacles. Test your reflexes and see how high you can score!
+            </p>
+        </div>
+    </div>
+</body>
+</html>

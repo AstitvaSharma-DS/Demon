@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign_out</title>
+    <script>
+        function deletealert(){
+            alert("do you want to sign out?");
+            var r = confirm("Press a button!");
+            if(r=="cancel"){
+                alert("You pressed OK!");
+                return true; }
+            return true
+                
+        }</script>
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    h2 {
+      color: #fff;
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px 12px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      font-size: 1em;
+      background: rgba(255, 255, 255, 0.123);
+      color: #fff;
+      transition: background 0.3s ease;
+    }
+
+    .form-group input::placeholder {
+      color: #ffffff;
+    }
+
+    
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to left, #2c5364,#153f36);
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(to right, #2c5364,#153f36);
+    }
+    </style>
+</head>
+
+<body>
+    <h2>Sign out</h2>
+    <div>
+    <form  action="/signout" method="POST" onsubmit=deletealert() ;>
+      <div type="container" class="form-group"> 
+        <label for="email">Confirm Email</label>
+        <input type="email" name= "email" id="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Confirm Password</label>
+        <input type="password" name="Cpassword" id="Cpass" placeholder="Confirm Password" required>
+      </div>
+      <a href="http://127.0.0.1:6060/sucssout"><button type="submit" class="btn" onclick >sign_out</button></a>
+    </form>
+    </div>
+</body>
+</html>

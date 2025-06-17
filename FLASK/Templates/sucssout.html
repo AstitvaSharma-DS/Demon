@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign_out</title>
+    <style>
+        /* * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Verdana, Geneva, sans-serif;
+        } */
+        body{
+            background:linear-gradient(95deg,aqua,lightblue,#fff) ;
+            color :crimson;
+            font-size: 30px;
+            display: -moz-stack;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; 
+            height: 100vh;
+            text-align: center;
+        }
+        .btn{
+            background-color: green;
+            color:#fff;
+            padding: 10px 20px;
+            border-color: black;
+            border-width: 20%;
+            margin-top: auto;
+            width: 240px;
+            height: 120px;
+            border-radius: 20px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: inset 0 0 0 0 rgba(255, 255, 255, 0.1);
+            transition: 0.5s;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover{
+            background-color: darkgreen;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>your data is successfully deleted</h1>
+    <br>
+   <A href="http://127.0.0.1:6060/index"><button type="button" class="btn">Let's Create new ONE!.</button></A>
+    <img src="{{ url_for('static',filename='rainbow.png')}}" alt="rainbow" height="50px" width="50px" style="margin-right: 0%;">
+</body>
+</html>

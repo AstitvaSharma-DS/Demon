@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #232526 10%, #414345 90%);
+            color: #fff;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: bold;
+            margin-left: 130px;
+        }
+        .navbar-brand {
+            margin-left: 20px;
+            margin-right: 20px;
+            color: #fff !important;
+            font-weight: bold;
+            
+        }
+        div.container{
+            margin-top: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color:black;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #cecece;
+            text-align: center;
+            border-radius: 10px;
+            border: 2px solid ; /* Add a visible border */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }   
+
+        .card-body {
+            display: flex;
+            border-top: 1px solid; 
+            border-radius: 0 0 10px 10px;
+            padding: 16px;
+        }
+        .my-buttons button {
+            margin-bottom: 10px;
+        }
+        .card-text {
+            margin-left: 15%;
+            border: 1px solid ; 
+            border-radius: 6px;
+            padding: 10px 10px;
+            background: rgba(255,255,255,0.05);
+            /* margin-bottom: 10px; */
+        }
+        
+        div.card-text button{
+            color:gainsboro;
+            background:linear-gradient(-138deg,rgb(67, 203, 221),grey,cyan);
+            height: 50px;
+            width: 140px;
+            transition-duration: 0.5s;
+        }
+        div.card-text button:hover{
+            transition-duration: 0.5s;
+            color:gainsboro;
+            background:linear-gradient(138deg,rgb(50, 153, 167),rgb(83, 82, 82),rgb(1, 156, 156));
+            height: 55px;
+            width:145px;
+        }
+        .sidebar-profile {
+            position: fixed;
+            top: 10;
+            left: 0;
+            width: 50%;
+            height: 100vh;
+            background: #4d7e96;
+            color: #fff;
+            padding: 24px 16px 16px 16px;
+            overflow-y: auto;
+            box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+            z-index: 1050;
+        }
+        .sidebar-profile ul {
+            width: 100%;
+            text-align: center;
+            list-style: none;
+            padding: 10%;
+            margin: 20px;
+        }
+
+        .sidebar-profile ul li {
+            margin-bottom: 14px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        /* .sidebar-profile ul li:hover {
+            border: 1px solid #fff; /* Add a blue border */
+            /* color: #007bff; */
+        .Back1,    
+        .Back {
+            background: linear-gradient(-138deg, grey, rgb(0, 0, 0), rgb(132, 155, 155));
+            color: gainsboro;
+            height: 25px;
+            width: 70px;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.5s, color 0.5s, width 0.5s, height 0.5s;
+        }
+        b.back1{
+            right:0;
+        }
+        .Back1:hover,
+        .Back:hover {
+            background: linear-gradient(138deg, grey, rgb(0, 0, 0), rgb(132, 155, 155));
+            color: gainsboro;
+            height: 30px;
+            width: 75px;
+            border: none;
+            border-radius: 5px;
+        }
+        .sidebar-score {
+            position: fixed;
+            top: 10;
+            right: 0;
+            width: 50%;
+            height: 100vh;
+            background: #4d7e96;
+            color: #fff;
+            padding: 24px 16px 16px 16px;
+            overflow-y: auto;
+            box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+            z-index: 1050;
+        }
+        .sidebar-score ul {
+            width: 100%;
+            text-align: center;
+            list-style: none;
+            padding: 10%;
+            margin: 0;
+        }
+
+        .sidebar-score ul li {
+            margin-bottom: 14px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .sidebar-profile,
+        .sidebar-score {
+            transition: transform 0.6s cubic-bezier(.4,0,.2,1);
+        }
+
+        .sidebar-profile {
+            transform: translateX(-100%);
+            left: 0;
+        }
+
+        .sidebar-score {
+            transform: translateX(100%);
+            right: 0;
+        }
+
+        .sidebar-profile.active {
+            transform: translateX(0);
+        }
+
+        .sidebar-score.active {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+        <h4 class="text-white">Welcome!</h4>
+        <span class="text-muted">This is a basic online gaming platform.<br>Explore Games
+
+Browse our collection of online games from the Home section.<br>
+Click on any game to see its details and start playing.<br>
+Play & Compete<br>
+
+Play solo or challenge your friends!<br>
+Track your scores and achievements on your profile.<br>
+Profile & Progress<br>
+<br>
+Visit your Profile to view your stats, achievements </span>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand" href="http://127.0.0.1:6060/front"><img src="{{ url_for('static', filename='screenshot.png') }}" alt="DEMON" height="40"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="http://127.0.0.1:6060/front" style="color: #fff;">DEMON</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="http://127.0.0.1:6060/home">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:6060/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:6060/about">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="sidebar-profile" >
+        <button class="Back" id="closeProfileBtn" type="button">Back</button><br><br>
+        <ul>
+            <h4 >Profile</h4>
+            {%for i in data%}
+            <li><p class="card-text"><strong>Username:</strong> {{ i.name }}</p></li><br>
+            <li><p class="card-text"><strong>Email:</strong> {{ i.email }}</p></li><br>
+            {%endfor%}
+        </ul>
+    </div>
+    <div class="sidebar-score" >
+        <button class="Back1" id="closeScoreBtn" type="button" >Back</button><br><br>
+        <ul>
+            <h4 >Score!</h4>
+            <li><p class="card-text"><strong>{{i.game:}}</strong>     {{ i.Score }}</p></li><br>
+            <li><p class="card-text"><strong>{{i.game:}}</strong>     {{ i.Score }}</p></li><br>
+        </ul>
+    </div>
+    <div class="container mt-5 ">
+        <h1 class="text-center">Profile Information</h1>
+        <div class="row mt-4">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body" >
+                        <div class="card-text">
+                        <strong>Profile:</strong><br><button id="showProfileBtn"><strong>See Profile</strong> </button>
+                        </div>
+                        <div class="card-text">
+                        <strong>Score:</strong><br><button  id="showScoreBtn"><strong>See Score</strong> </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('showProfileBtn').onclick = function() {
+            document.querySelector('.sidebar-profile').classList.add('active');
+        };
+        document.getElementById('closeProfileBtn').onclick = function() {
+            document.querySelector('.sidebar-profile').classList.remove('active');
+        };
+        document.getElementById('showScoreBtn').onclick = function() {
+            document.querySelector('.sidebar-score').classList.add('active');
+        };
+        document.getElementById('closeScoreBtn').onclick = function() {
+            document.querySelector('.sidebar-score').classList.remove('active');
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>_ _</title>
+    <style>
+        body{
+            background:linear-gradient(black,red,grey);
+            margin: auto;
+            justify-content: center;
+            align-items: center;
+            text-align-last: center;
+            margin-top: 50px;
+            min-height: 100vh;
+            color:#fff;
+            animation-name: back;
+            animation-duration:5s;
+        }
+        h1{
+            color:#fff;
+            opacity: 0;
+            animation: fadeIn 4s ease-in 1s forwards;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        @keyframes back {
+            from{background-color:linear-gradient(black,red,grey);}
+            to{background: black;}
+        }
+        #demon-container {
+            margin: 40px auto 0 auto;
+            width: 220px;
+            height: 220px;
+            position: relative;
+        }
+        .shake {
+            animation:fadeIn 4s ease-in 1s forwards;
+            animation:shake 0.5s;
+        }
+        @keyframes shake {
+            0% { transform: translate(10px,-5px) rotate(20deg);}
+            20% { transform: translate(-10px, 5px) rotate(-5deg);}
+            40% { transform: translate(10px, -5px) rotate(5deg);}
+            60% { transform: translate(-10px, 5px) rotate(-5deg);}
+            80% { transform: translate(10px, -5px) rotate(5deg);}
+            100% { transform: translate(-10px, 5px) rotate(-5deg);}
+            120% { transform: translate(-10px, 5px) rotate(-5deg);}
+            140% { transform: translate(10px, -5px) rotate(5deg);}
+            160% { transform: translate(-10px, 5px) rotate(-5deg);}
+            180% { transform: translate(10px, -5px) rotate(5deg);}
+            200% { transform: translate(-10px, 5px) rotate(-5deg);}
+        }
+        #fire-canvas {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 320px; 
+            z-index: -1;
+            pointer-events: none;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>WELCOME TO DEMON !<br> Powered by someone.</h1>
+    <div id="demon-container">
+        <svg id="demon-face" width="220" height="220" viewBox="0 0 200 200">
+            <!-- Horns -->
+            <path d="M40 40 Q10 0 70 30" stroke="#fff" stroke-width="7" fill="none"/>
+            <path d="M160 40 Q190 0 130 30" stroke="#fff" stroke-width="7" fill="none"/>
+            <!-- Face -->
+            <ellipse cx="100" cy="110" rx="80" ry="75" fill="#6b0000" stroke="#2d0000" stroke-width="6"/>
+            <!-- Eyes -->
+            <ellipse cx="70" cy="110" rx="15" ry="12" fill="#fff"/>
+            <ellipse cx="130" cy="110" rx="15" ry="12" fill="#fff"/>
+            <!-- Pupils -->
+            <circle id="pupil-left" cx="70" cy="110" r="5" fill="#ff0000"/>
+            <circle id="pupil-right" cx="130" cy="110" r="5" fill="#ff0000"/>
+            <!-- Eyebrows -->
+            <path d="M55 95 Q70 90 85 100" stroke="#000" stroke-width="5" fill="none"/>
+            <path d="M145 95 Q130 90 115 100" stroke="#000" stroke-width="5" fill="none"/>
+            <!-- Mouth (normal) -->
+            <g id="mouth-normal">
+                <path d="M80 150 Q100 170 120 150" stroke="#900" stroke-width="5" fill="none"/>
+            </g>
+            <!-- Mouth (laugh, hidden by default) -->
+            <g id="mouth-laugh" style="display:none;">
+                <ellipse cx="100" cy="155" rx="25" ry="15" fill="#300" stroke="#900" stroke-width="4"/>
+                <polygon points="90,155 95,175 100,155" fill="#fff"/>
+                <polygon points="110,155 115,175 120,155" fill="#fff"/>
+            </g>
+        </svg>
+    </div>
+    <script>
+        // Eyes follow cursor
+        document.addEventListener('mousemove', function(e) {
+            const left = { x: 70, y: 110 };
+            const right = { x: 130, y: 110 };
+            const svgRect = document.getElementById('demon-face').getBoundingClientRect();
+            const centerX = svgRect.left + svgRect.width / 2;
+            const centerY = svgRect.top + svgRect.height / 2;
+            const dx = e.clientX - centerX;
+            const dy = e.clientY - centerY;
+            const maxDist = 7;
+            function getPupilOffset(eye) {
+                const angle = Math.atan2(dy, dx);
+                return {
+                    x: eye.x + Math.cos(angle) * maxDist,
+                    y: eye.y + Math.sin(angle) * maxDist * 0.7
+                };
+            }
+            const leftPupil = document.getElementById('pupil-left');
+            const rightPupil = document.getElementById('pupil-right');
+            const leftPos = getPupilOffset(left);
+            const rightPos = getPupilOffset(right);
+            leftPupil.setAttribute('cx', leftPos.x);
+            leftPupil.setAttribute('cy', leftPos.y);
+            rightPupil.setAttribute('cx', rightPos.x);
+            rightPupil.setAttribute('cy', rightPos.y);
+        });
+
+        // Looping laugh animation
+        const demonContainer = document.getElementById('demon-container');
+        const mouthNormal = document.getElementById('mouth-normal');
+        const mouthLaugh = document.getElementById('mouth-laugh');
+
+        function demonLaugh() {
+            mouthNormal.style.display = 'none';
+            mouthLaugh.style.display = '';
+            demonContainer.classList.add('shake');
+            setTimeout(() => {
+                demonContainer.classList.remove('shake');
+                mouthNormal.style.display = '';
+                mouthLaugh.style.display = 'none';
+            }, 1200);
+        }
+
+        // Start the loop
+        setInterval(demonLaugh, 1500);
+    </script>
+    <!-- Fire Effect Canvas -->
+    <canvas id="fire-canvas"></canvas>
+        PRESS SPACE TO CONTINUE!
+    <script>
+    // Simple fire effect using canvas, stuck to bottom and huge
+    const canvas = document.getElementById('fire-canvas');
+    const ctx = canvas.getContext('2d');
+    let firePixels = [];
+    let fireWidth, fireHeight;
+    let fireImage;
+
+    function resizeFire() {
+        canvas.width = window.innerWidth;
+        canvas.height = 320; // Height of the fire (huge)
+        fireWidth = Math.floor(canvas.width / 4);  // Lower resolution for pixel effect
+        fireHeight = Math.floor(canvas.height / 4);
+        firePixels = new Array(fireWidth * fireHeight).fill(0);
+        for(let x=0; x<fireWidth; x++) {
+            firePixels[(fireHeight-1)*fireWidth + x] = 36;
+        }
+        fireImage = ctx.createImageData(fireWidth, fireHeight);
+    }
+    resizeFire();
+    window.addEventListener('resize', resizeFire);
+
+    const fireColorsPalette = [
+        [7,7,7],[31,7,7],[47,15,7],[71,15,7],[87,23,7],[103,31,7],[119,31,7],[143,39,7],
+        [159,47,7],[175,63,7],[191,71,7],[199,71,7],[223,79,7],[223,87,7],[223,87,7],[215,95,7],
+        [215,95,7],[215,103,15],[207,111,15],[207,119,15],[207,127,15],[207,135,23],[199,135,23],
+        [199,143,23],[199,151,31],[191,159,31],[191,159,31],[191,167,39],[191,167,39],[191,175,47],
+        [183,175,47],[183,183,47],[183,183,55],[207,207,111],[223,223,159],[239,239,199],[255,255,255]
+    ];
+
+    function updateFire() {
+        for(let y=1; y<fireHeight; y++) {
+            for(let x=0; x<fireWidth; x++) {
+                let src = y*fireWidth + x;
+                let below = src + fireWidth;
+                if(below < fireWidth*fireHeight) {
+                    let decay = Math.floor(Math.random()*3);
+                    let newVal = firePixels[below] - decay;
+                    firePixels[src-decay >= 0 ? src-decay : 0] = newVal > 0 ? newVal : 0;
+                }
+            }
+        }
+    }
+
+    function renderFire() {
+        for(let i=0; i<firePixels.length; i++) {
+            let color = fireColorsPalette[firePixels[i]];
+            fireImage.data[i*4+0] = color[0];
+            fireImage.data[i*4+1] = color[1];
+            fireImage.data[i*4+2] = color[2];
+            fireImage.data[i*4+3] = 255;
+        }
+        // Draw pixel fire at the bottom, then scale up to fill canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.putImageData(fireImage, 0, 0);
+        ctx.save();
+        ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(canvas, 0, 0, fireWidth, fireHeight, 0, canvas.height - fireHeight * 4, canvas.width, fireHeight * 4);
+        ctx.restore();
+    }
+
+    function loop() {
+        updateFire();
+        renderFire();
+        requestAnimationFrame(loop);
+    }
+    loop();
+    </script> 
+<!-- audio HERE -->
+    <audio id="demon-audio" src="{{ url_for('static', filename='laugh.mp3') }}" loop></audio>
+    <script>
+    document.addEventListener('click', function() {
+        document.getElementById('demon-audio').play();
+        }, { once: true });
+    </script>
+    <!-- ...existing HTML... -->
+    <script>
+    document.addEventListener('keydown', function(event) {
+        if (event.code === "Space") {
+            event.preventDefault();
+            window.location.href = "http://127.0.0.1:6060/index";
+        }
+    });
+    </script>
+</body>
+</html>
